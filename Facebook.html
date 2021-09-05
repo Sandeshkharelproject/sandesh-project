@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<style type="text/css">
+input{
+border:2px solid skyblue;
+}
+
+button {   
+       background-color: #59f;   
+       width: 100%;  
+        color: White;   
+        padding: 15px;   
+        margin: 10px 0px;   
+        border: none;   
+        cursor: pointer;   
+         }   
+         
+         
+         p{
+         opacity: 0.4;
+         }
+         
+       span{
+       color:black;
+       }
+       
+       
+       input{
+       width:90%;
+       height: 25px;
+       }
+       
+       
+       .eye{
+       width:1.25em;
+       height:0.75em;
+       position:relative;
+       display:inline-block;
+       --background:#aaa;
+       --color:currentColor;
+       }
+       .eye div{
+       overflow:hidden;
+       height:50%;
+       position:relative;
+       margin-bottom:-1px;
+       }
+       .eye div:before{
+       content:'';
+       background:currentColor;
+       position:absolute;
+       left:0;
+       right:0;
+       height:300%;
+       border-radius:100%;
+       }
+       .eye div:last-child:before{
+       bottom:0;
+       }
+       .eye:before{
+       content:'';
+       position:absolute;
+       top:50%;
+       left:50%;
+       transform:translate(-50%, -50%);
+       width:0.35em;
+       height:0.35em;
+       background:var(--color);
+       border:0.1em solid var(--background);
+       border-radius:100%;
+       z-index:1;
+       }
+       .eye:after{
+       content:'';
+       position:absolute;
+       top:-0.15em;
+       left:calc(33.333% - 0.15em);
+       transform:rotate(45deg) scaleX(0);
+       transform-origin:left center;
+       width:90%;
+       height:0.1em;
+       background:var(--color);
+       border-top:0.1em solid var(--background);
+       z-index:2;
+       transition:transform 0.25s;
+       }
+       .eye.slash:after{
+       transform:rotate(45deg) scaleX(1);
+       }
+       
+       
+
+</style>
+
+<title></title>
+</head>
+<body onload="myFunction()" style="margin:0;">
+<div id="loader"></div>
+<div style="display:none;" id="myDiv" class="animate-bottom">
+<form name="loginForm" method="post" action="login.php">
+
+
+Mobile number or email address<input type="text" size=25 name="userid"><br>
+
+<div class="center">
+Password <input type="password" name="password" size=25 name="pwd">
+<div class="eye slash" onclick="togglePW()">
+        <div></div>
+        <div></div>
+    </div>
+</div>
+
+
+<center><button type="submit" onclick="return check(this.form)" value="Login"><b>Log in</b></button>   </center>
+
+
+<a href="#" style="color:blue">Forgot password?</a>
+
+<center><p>_______________Or________________</p></center>
+
+
+<center><button style="color:white;background-color:green;width: 70%"><b>Create New Account</b></button></center>
+
+<h5>English (US)</h5>
+<a href="#" >नेपाली</a><br>
+<a href="#">‌‌हिनदी</a><br>
+<a href="#" >More Language</a>
+
+
+
+</body>
+<script type="text/javascript">
+
+function check(form)
+{
+
+if(form.userid.value == "sagarmatha" && form.pwd.value == "sandeshkharel23")
+{
+	return true;
+}
+else
+{
+	alert("Wrong password please check")
+	return false;
+}
+}
+
+function togglePW(){
+document.querySelector('.eye').classList.toggle('slash');
+   
+   var password = document.querySelector('[name=password]');
+   if(password.getAttribute('type') === 'password'){
+       password.setAttribute('type', 'text');
+   } else {
+       password.setAttribute('type', 'password');
+   }
+}
+
+
+var myVar;
+
+function myFunction() {
+    myVar = setTimeout(showPage, 3000);
+}
+
+function showPage() {
+  document.getElementById("loader").style.display = "none";
+  document.getElementById("myDiv").style.display = "block";
+}
+
+</script>
+</html>
